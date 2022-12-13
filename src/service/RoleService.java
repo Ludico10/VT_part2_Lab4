@@ -2,8 +2,8 @@ package service;
 
 import dao.DAOfactory;
 import dao.interfaces.RoleDAO;
+import entity.Role;
 
-import javax.management.relation.Role;
 import java.util.Optional;
 
 public class RoleService {

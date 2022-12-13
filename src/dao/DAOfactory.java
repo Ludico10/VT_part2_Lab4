@@ -1,5 +1,7 @@
 package dao;
 
+import dao.impl.*;
+
 public class DAOfactory {
 
     private static final DAOfactory instance = new DAOfactory();
@@ -10,29 +12,29 @@ public class DAOfactory {
         return instance;
     }
 
-    private final UserDAOImpl userDao = new UserDAOImpl();
-    private final RoleDAOImpl roleDao = new RoleDAOImpl();
-    private final UserInfoDAOImpl userInfoDao = new UserInfoDAOImpl();
-    private final UserOrderDAOImpl userOrderDao=new UserOrderDAOImpl();
-    private final ApartmentDAOImp apartmentDao=new ApartmentDAOImp();
+    private final UserDAOimpl userDao = new UserDAOimpl();
+    private final RoleDAOimpl roleDao = new RoleDAOimpl();
+    private final UserInfoDAOimpl userInfoDao = new UserInfoDAOimpl();
+    private final UserOrderDAOimpl userOrderDao=new UserOrderDAOimpl();
+    private final ApartmentDAOimpl apartmentDao=new ApartmentDAOimpl();
 
-    public UserDAOImpl getUserDAO() {
+    public UserDAOimpl getUserDAO() {
         return userDao;
     }
 
-    public RoleDAOImpl getRoleDAO() {
+    public RoleDAOimpl getRoleDAO() {
         return roleDao;
     }
 
-    public UserInfoDAOImpl getUserInformationDAO() {
+    public UserInfoDAOimpl getUserInformationDAO() {
         return userInfoDao;
     }
 
-    public UserOrderDAOImpl getUserOrderDAO() {
+    public UserOrderDAOimpl getUserOrderDAO() {
         return userOrderDao;
     }
 
-    public ApartmentDAOImp getApartmentDAO() {
+    public ApartmentDAOimpl getApartmentDAO() {
         return apartmentDao;
     }
 }

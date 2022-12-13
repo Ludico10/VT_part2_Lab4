@@ -14,7 +14,7 @@ public class ApartmentService {
 
     public List<Apartment> retrieveApartmentByStatus(String status) throws Exception {
         try {
-            ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartamentDAO();
+            ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartmentDAO();
             return apartmentDAO.findByStatus(status);
         }catch (Exception e) {
             throw new Exception(e.getMessage(), e);
