@@ -1,5 +1,8 @@
 package service;
 
+import dao.DAOfactory;
+import dao.interfaces.ApartmentDAO;
+import dao.interfaces.UserOrderDAO;
 import entity.Apartment;
 import entity.UserOrder;
 
@@ -9,9 +12,9 @@ import java.util.Optional;
 
 public class ApartmentService {
 
-    public List<Apartment> retriveApartmentByStatus(String status) throws Exception {
+    public List<Apartment> retrieveApartmentByStatus(String status) throws Exception {
         try {
-            ApartmentDAO apartmentDAO = DAOFactory.getInstance().getApartamentDAO();
+            ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartamentDAO();
             return apartmentDAO.findByStatus(status);
         }catch (Exception e) {
             throw new Exception(e.getMessage(), e);
@@ -32,7 +35,7 @@ public class ApartmentService {
             throw new Exception(e.getMessage(), e);
         }
 
-        ApartmentDAO apartmentDAO = DAOFactory.getInstance().getApartamentDAO();
+        ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartmentDAO();
         Apartment apartment = buildApartment(status, intNumber, dblPrice);
         try {
             apartmentDAO.save(apartment);
@@ -44,10 +47,10 @@ public class ApartmentService {
 
     public List<Apartment> retrieveApartmentsByUserOrders(List<UserOrder> userOrders) throws Exception {
         try {
-            ApartmentDAO apartmentDAO = DAOFactory.getInstance().getApartamentDAO();
+            ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartmentDAO();
             List<Apartment> result = new ArrayList<>();
             for (UserOrder userOrder : userOrders) {
-                result.add(apartmentDAO.finndById(userOrder.getApartmentId()).get());
+                result.add(apartmentDAO.findById(userOrder.getApartmentId()).get());
             }
             return result;
         }catch(Exception e) {
@@ -55,14 +58,14 @@ public class ApartmentService {
         }
     }
 
-    public List<Apartment> retrieveApartamentsByUserId(int userId) throws Exception {
+    public List<Apartment> retrieveApartmentsByUserId(int userId) throws Exception {
         try {
-            UserOrderDAO userOrderDao=DAOFactory.getInstance().getUserOrderDAO();
+            UserOrderDAO userOrderDao=DAOfactory.getInstance().getUserOrderDAO();
             List<UserOrder> userOrders=userOrderDao.findByUserId(userId);
             List<Apartment> result=new ArrayList<>();
-            ApartmentDAO apartmentDao= DAOFactory.getInstance().getApartamentDAO();
+            ApartmentDAO apartmentDao= DAOfactory.getInstance().getApartmentDAO();
             for (UserOrder userOrder : userOrders) {
-                result.add(apartamentDao.finndById(userOrder.getApartmentId()).get());
+                result.add(apartmentDao.findById(userOrder.getApartmentId()).get());
             }
             return result;
         } catch (Exception e) {
@@ -70,10 +73,10 @@ public class ApartmentService {
         }
     }
 
-    public Optional<Apartment> retriveApartmentById(int apartmentId) throws Exception {
+    public Optional<Apartment> retrieveApartmentById(int apartmentId) throws Exception {
         try {
-            ApartmentDAO apartmentDAO = DAOFactory.getInstance().getApartamentDAO();
-            return apartmentDAO.finndById(apartmentId);
+            ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartmentDAO();
+            return apartmentDAO.findById(apartmentId);
         }catch (Exception e) {
             throw new Exception(e.getMessage(), e);
         }
@@ -81,14 +84,14 @@ public class ApartmentService {
 
     public void removeApartmentById(int apartmentId) throws Exception {
         try {
-            ApartmentDAO apartamentDAO= DAOFactory.getInstance().getApartamentDAO();
-            UserOrderDAO userOrderDAO=DAOFactory.getInstance().getUserOrderDAO();
+            ApartmentDAO apartmentDAO= DAOfactory.getInstance().getApartmentDAO();
+            UserOrderDAO userOrderDAO=DAOfactory.getInstance().getUserOrderDAO();
 
             List<UserOrder> userOrders=userOrderDAO.findByApartmentId(apartmentId);
             for (UserOrder userOrder : userOrders) {
                 userOrderDAO.removeById(userOrder.getId());
             }
-            apartamentDAO.removeById(apartmentId);
+            apartmentDAO.removeById(apartmentId);
         } catch (Exception e) {
             throw new Exception(e.getMessage(), e);
         }
@@ -96,14 +99,14 @@ public class ApartmentService {
 
     public List<Apartment> retrieveAllApartments() throws Exception {
         try {
-            ApartmentDAO apartmentDAO = DAOFactory.getInstance().getApartamentDAO();
-            return apartamentDAO.findAll();
+            ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartmentDAO();
+            return apartmentDAO.findAll();
         } catch (Exception e) {
             throw new Exception(e.getMessage(), e);
         }
     }
 
-    public boolean updateApartmentInformation(String id, String status, String number, String price) throws Exception {
+    public boolean updateApartmentInfo(String id, String status, String number, String price) throws Exception {
         if(status == null || price == null){
             return false;
         }
@@ -119,7 +122,7 @@ public class ApartmentService {
             throw new Exception(e.getMessage(), e);
         }
 
-        ApartmentDAO apartmentDAO = DAOFactory.getInstance().getApartamentDAO();
+        ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartmentDAO();
         Apartment apartment = buildApartment(status, intNumber, dblPrice);
         try {
             apartmentDAO.updateApartmentById(intId, apartment);
@@ -130,7 +133,7 @@ public class ApartmentService {
     }
 
     public void updateApartmentStatusById(int id, String status) throws Exception {
-        ApartmentDAO apartmentDAO = DAOFactory.getInstance().getApartamentDAO();
+        ApartmentDAO apartmentDAO = DAOfactory.getInstance().getApartmentDAO();
         try {
             apartmentDAO.updateApartmentStatusById(id,status);
         } catch (Exception e) {

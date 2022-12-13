@@ -25,7 +25,6 @@ public class UserOrder implements Serializable {
         this.leaseDuration = leaseDuretion;
     }
 
-    @Override
     public int getId() {
         return id;
     }
@@ -105,14 +104,12 @@ public class UserOrder implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder result = new StringBuilder("User{");
-        result.append("id=").append(id);
-        result.append(", leaseDuration='").append(leaseDuration).append('\'');
-        result.append(", startTime=").append(startTime);
-        result.append(", apartmentId=").append(apartmentId);
-        result.append(", userId=").append(userId);
-        result.append(", status='").append(status).append('\'');
-        result.append('}');
-        return result.toString();
+        return "User{" + "id=" + id +
+                ", leaseDuration='" + leaseDuration + '\'' +
+                ", startTime=" + startTime +
+                ", apartmentId=" + apartmentId +
+                ", userId=" + userId +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

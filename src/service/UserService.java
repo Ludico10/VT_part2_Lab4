@@ -1,8 +1,12 @@
 package service;
 
+import dao.DAOfactory;
+import dao.interfaces.RoleDAO;
+import dao.interfaces.UserDAO;
+import dao.interfaces.UserInfoDAO;
 import entity.Role;
 import entity.User;
-import entity.UserInformation;
+import entity.UserInfo;
 import entity.UserOrder;
 
 import java.util.LinkedList;
@@ -17,7 +21,7 @@ public class UserService {
             return Optional.empty();
         }
         try {
-            UserDAO userDAO = DAOFactory.getInstance().getUserDAO();
+            UserDAO userDAO = DAOfactory.getInstance().getUserDAO();
             return userDAO.findByEmail(email);
         } catch (Exception e) {
             throw new Exception(e.getMessage(), e);
@@ -47,18 +51,18 @@ public class UserService {
         }
 
         try {
-            UserDAO userDao = DAOFactory.getInstance().getUserDAO();
+            UserDAO userDao = DAOfactory.getInstance().getUserDAO();
             if (userDao.findByEmail(email).isPresent()) {
                 return false;
             }
-            RoleDAO roleDAO = DAOFactory.getInstance().getRoleDAO();
+            RoleDAO roleDAO = DAOfactory.getInstance().getRoleDAO();
             Optional<Role> role = roleDAO.findByRole(user);
             if (role.isEmpty()) {
                 return false;
             }
 
-            UserInformationDAO userInformationDAO = DAOFactory.getInstance().getUserInformationDAO();
-            UserInformation userInformation = buildUserInformation(name, phone);
+            UserInfoDAO userInformationDAO = DAOfactory.getInstance().getUserInformationDAO();
+            UserInfo userInformation = buildUserInfo(name, phone);
             int userInformationId = userInformationDAO.save(userInformation);
 
             User user = buildUser(email, userInformationId, role.get().getId());
@@ -72,17 +76,17 @@ public class UserService {
 
     public Optional<User> retrieveUserById(int userId) throws Exception {
         try {
-            UserDAO userDao = DAOFactory.getInstance().getUserDAO();
+            UserDAO userDao = DAOfactory.getInstance().getUserDAO();
             Optional<User> result;
-            result = userDao.finndById(userId);
+            result = userDao.findById(userId);
             return result;
         } catch (Exception e) {
             throw new Exception(e.getMessage(), e);
         }
     }
 
-    private UserInformation buildUserInformation(String name, String phone) {
-        UserInformation userInformation = new UserInformation();
+    private UserInfo buildUserInfo(String name, String phone) {
+        UserInfo userInformation = new UserInfo();
         userInformation.setName(name);
         userInformation.setPhone(phone);
         return userInformation;

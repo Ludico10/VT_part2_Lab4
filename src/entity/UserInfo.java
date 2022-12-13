@@ -2,15 +2,15 @@ package entity;
 
 import java.io.Serializable;
 
-public class UserInformation implements Serializable {
+public class UserInfo implements Serializable {
 
     private int id;
     private String name;
     private String phone;
 
-    public UserInformation() {}
+    public UserInfo() {}
 
-    public UserInformation(int id, String name, String phone) {
+    public UserInfo(int id, String name, String phone) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -46,7 +46,7 @@ public class UserInformation implements Serializable {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
 
-        UserInformation userInformation = (UserInformation)obj;
+        UserInfo userInformation = (UserInfo)obj;
         return id == userInformation.id &&
                 name.equals(userInformation.name) &&
                 phone.equals(userInformation.phone);

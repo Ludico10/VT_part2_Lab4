@@ -1,5 +1,7 @@
 package service;
 
+import dao.DAOfactory;
+import dao.interfaces.UserOrderDAO;
 import entity.UserOrder;
 
 import java.sql.Timestamp;
@@ -11,8 +13,8 @@ public class UserOrderService {
 
     public Optional<UserOrder> retrieveUserOrderById(int userOrderId) throws Exception {
         try {
-            UserOrderDAO userOrderDAO = DAOFactory.getInstance().getUserOrderDAO();
-            return userOrderDAO.finndById(userOrderId);
+            UserOrderDAO userOrderDAO = DAOfactory.getInstance().getUserOrderDAO();
+            return userOrderDAO.findById(userOrderId);
         } catch (Exception e) {
             throw new Exception(e.getMessage(), e);
         }
@@ -20,7 +22,7 @@ public class UserOrderService {
 
     public List<UserOrder> retrieveUserOrderByUserId(int userId) throws Exception {
         try {
-            UserOrderDAO userOrderDAO = DAOFactory.getInstance().getUserOrderDAO();
+            UserOrderDAO userOrderDAO = DAOfactory.getInstance().getUserOrderDAO();
             return userOrderDAO.findByUserId(userId);
         } catch (Exception e) {
             throw new Exception(e.getMessage(), e);
@@ -29,7 +31,7 @@ public class UserOrderService {
 
     public List<UserOrder> retrieveUserOrderByStatus(String status) throws Exception {
         try {
-            UserOrderDAO userOrderDAO = DAOFactory.getInstance().getUserOrderDAO();
+            UserOrderDAO userOrderDAO = DAOfactory.getInstance().getUserOrderDAO();
             return userOrderDAO.findByStatus(status);
         } catch (Exception e) {
             throw new Exception(e.getMessage(), e);
@@ -38,8 +40,8 @@ public class UserOrderService {
 
     public boolean updateStatusAtUserOrderById(int userOrderId, String status) throws Exception {
         try {
-            UserOrderDAO userOrderDao = DAOFactory.getInstance().getUserOrderDAO();
-            Optional<UserOrder> userOrder = userOrderDao.finndById(userOrderId);
+            UserOrderDAO userOrderDao = DAOfactory.getInstance().getUserOrderDAO();
+            Optional<UserOrder> userOrder = userOrderDao.findById(userOrderId);
             if (userOrder.isEmpty()) {
                 return false;
             }
@@ -79,7 +81,7 @@ public class UserOrderService {
         }
         try {
             UserOrder userOrder = buildUserOrder(leaseDuration, userId,apartmentId);
-            UserOrderDAO userOrderDAO = DAOFactory.getInstance().getUserOrderDAO();
+            UserOrderDAO userOrderDAO = DAOfactory.getInstance().getUserOrderDAO();
             userOrderDAO.save(userOrder);
             return true;
         } catch (Exception e) {
