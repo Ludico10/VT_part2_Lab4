@@ -1,4 +1,4 @@
-package service;
+package service.impl;
 
 import dao.DAOfactory;
 import dao.interfaces.RoleDAO;
@@ -8,12 +8,13 @@ import entity.Role;
 import entity.User;
 import entity.UserInfo;
 import entity.UserOrder;
+import service.interfaces.UserInterface;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserService {
+public class UserServiceImpl implements UserInterface {
     private static final String user = "user";
 
     public Optional<entity.User> login(String email) throws Exception {

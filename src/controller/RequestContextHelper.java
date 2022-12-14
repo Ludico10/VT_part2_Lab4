@@ -72,7 +72,7 @@ public class RequestContextHelper {
         }
     }
 
-    private void fillRequestAttributes(HttpSession session, Map<String, Object> attributes) {
+    private void fillSessionAttributes(HttpSession session, Map<String, Object> attributes) {
         for (Map.Entry<String, Object> attribute : attributes.entrySet()) {
             session.setAttribute(attribute.getKey(), attribute.getValue());
         }

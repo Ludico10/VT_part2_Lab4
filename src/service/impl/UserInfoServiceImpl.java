@@ -1,15 +1,16 @@
-package service;
+package service.impl;
 
 import dao.DAOfactory;
 import dao.interfaces.UserInfoDAO;
 import entity.User;
 import entity.UserInfo;
+import service.interfaces.UserInfoInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserInfoService {
+public class UserInfoServiceImpl implements UserInfoInterface {
     public Optional<UserInfo> retrieveUserInfoById(int userInformationId) throws Exception {
         try {
             UserInfoDAO userInformationDAO = DAOfactory.getInstance().getUserInformationDAO();

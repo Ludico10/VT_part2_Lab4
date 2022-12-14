@@ -1,16 +1,17 @@
-package service;
+package service.impl;
 
 import dao.DAOfactory;
 import dao.interfaces.ApartmentDAO;
 import dao.interfaces.UserOrderDAO;
 import entity.Apartment;
 import entity.UserOrder;
+import service.interfaces.ApartmentInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ApartmentService {
+public class ApartmentServiceImpl implements ApartmentInterface {
 
     public List<Apartment> retrieveApartmentByStatus(String status) throws Exception {
         try {

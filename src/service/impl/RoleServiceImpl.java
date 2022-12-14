@@ -1,12 +1,13 @@
-package service;
+package service.impl;
 
 import dao.DAOfactory;
 import dao.interfaces.RoleDAO;
 import entity.Role;
+import service.interfaces.RoleInterface;
 
 import java.util.Optional;
 
-public class RoleService {
+public class RoleServiceImpl implements RoleInterface {
     public Optional<Role> retrieveRoleById(int roleId) throws Exception {
         try {
             RoleDAO roleDAO = DAOfactory.getInstance().getRoleDAO();

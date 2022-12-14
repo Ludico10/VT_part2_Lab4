@@ -1,14 +1,15 @@
-package service;
+package service.impl;
 
 import dao.DAOfactory;
 import dao.interfaces.UserOrderDAO;
 import entity.UserOrder;
+import service.interfaces.UserOrderInterface;
 
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
-public class UserOrderService {
+public class UserOrderServiceImpl implements UserOrderInterface {
     private static final String status = "blocked";
 
     public Optional<UserOrder> retrieveUserOrderById(int userOrderId) throws Exception {
@@ -95,7 +96,7 @@ public class UserOrderService {
 
     private UserOrder buildUserOrder(int leaseDuration, int userId, int apartmentId) {
         UserOrder userOrder = new UserOrder();
-        userOrder.setStatus(UserOrderService.status);
+        userOrder.setStatus(UserOrderServiceImpl.status);
         userOrder.setLeaseDuration(leaseDuration);
         userOrder.setUserId(userId);
         userOrder.setApartmentId(apartmentId);
