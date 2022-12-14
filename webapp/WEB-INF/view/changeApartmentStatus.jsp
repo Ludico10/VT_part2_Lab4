@@ -31,7 +31,6 @@
                     </div>
                 </c:if>
 
-
                 <form action="${pageContext.request.contextPath}/hotel?command=confirmChangingApartmentStatus&apartmentId=<%= request.getParameter("apartmentId") %>"
                       method="post">
                     <h4><fmt:message bundle="${loc}" key="language.enterProductDetails"/></h4>
@@ -44,7 +43,6 @@
                                    placeholder="доступно"  maxlength="15" required>
                         </div>
                     </div>
-
 
                     <button class="btn btn-primary" type="submit"><fmt:message bundle="${loc}"
                                                                                key="language.change"/></button>

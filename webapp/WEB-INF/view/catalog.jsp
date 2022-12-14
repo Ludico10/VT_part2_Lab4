@@ -42,9 +42,7 @@
                                                                                key="language.arrange"/>"
                                               onClick='location.href="${pageContext.request.contextPath}/hotel?command=addUserOrder&apartment_id=${apartment.id}"'></p>
                             </c:if>
-
                         </div>
-
                     </div>
                 </div>
             </div>

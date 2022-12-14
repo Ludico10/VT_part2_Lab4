@@ -52,7 +52,6 @@
                                             </c:if>
                                         </c:forEach>
                                     </c:forEach>
-
                             </td>
                             <td class="text-primary">
                                 <c:set scope="request" var="informationNumberFlag" value="0"/>

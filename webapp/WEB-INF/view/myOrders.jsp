@@ -87,7 +87,6 @@
                         </td>
                         <c:set var="continueExecuting" scope="request" value="true"/>
 
-
                         <c:if test="${userOrder.status == 'confirmed'}">
                             <td class="text-success"><c:out value="${userOrder.status}"/></td>
                         </c:if>

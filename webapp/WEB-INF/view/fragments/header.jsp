@@ -11,7 +11,6 @@
     <fmt:setBundle basename="localization.language" var="loc"/>
     <fmt:setBundle basename="information" var="info"/>
 
-
     <form action=${pageContext.request.contextPath}/hotel method="get">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="font-size: 20px">
 
@@ -113,9 +112,6 @@
                                 </button>
                             </li>
                         </c:when>
-
-
-
 
                         <c:when test="${sessionScope.user != null}">
                             <li class="nav-item dropdown">

@@ -32,14 +32,12 @@
 
                 <form action="${pageContext.request.contextPath}/hotel?command=confirmUserOrder&apartment_id=<%= request.getParameter("apartment_id") %>" method="post">
 
-
                     <div >
                         <label for="lease_duration" class="form-label"><fmt:message bundle="${loc}"
                                                                                    key="language.leaseDuration"/></label>
                         <input type="text" class="form-control" name="lease_duration" id="lease_duration"
                                placeholder="8 hour" pattern="^(([1-9][0-9]*)|([1-9]))$" maxlength="10" required>
                     </div>
-
 
                     <div class=>
 
@@ -50,7 +48,7 @@
                                        placeholder="2021" pattern="^[0-9]{4}$" maxlength="4" required></div>
                         </div>
 
-                        <div >
+                        <div>
                             <label for="month" class="form-label"><fmt:message bundle="${loc}" key="language.month"/></label>
                             <div class="input-group w-50">
                                 <input type="text" class="form-control" id="month" name="month"
@@ -72,7 +70,6 @@
                             <div class="input-group w-100">
                                 <input type="text"    class="form-control" id="hour" name="hour" placeholder="hour" pattern="^(([1-5]?([0-9])))$" maxlength="2" required></div>
                         </div>
-
 
                         <div >
                             <label for="minute" class="form-label"><fmt:message bundle="${loc}"

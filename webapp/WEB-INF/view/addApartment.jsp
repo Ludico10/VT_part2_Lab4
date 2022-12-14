@@ -51,7 +51,6 @@
                             <input type="text" name="type" id="type" class="form-control"
                                    maxlength="15" placeholder="standart" required>
                         </div>
-
                     </div>
 
                     <div class="mb-3">
@@ -67,7 +66,6 @@
                         <input type="text" class="form-control" name="apartmentNumber" id="apartmentNumber"
                                placeholder="73"pattern="^(([1-9][0-9]*)|([1-9]))$" maxlength="15" required>
                     </div>
-
 
                     <button class="btn btn-primary" type="submit"><fmt:message bundle="${loc}"
                                                                                key="language.add"/></button>

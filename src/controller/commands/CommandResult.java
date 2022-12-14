@@ -10,15 +10,15 @@ public class CommandResult {
         this.type = resultType;
     }
 
+    public String getPage() {
+        return page;
+    }
+
     public boolean isRedirect() {
         return type == CommandResultType.REDIRECT;
     }
 
     public boolean isForward() {
         return type == CommandResultType.FORWARD;
-    }
-
-    public String getPage() {
-        return page;
     }
 }

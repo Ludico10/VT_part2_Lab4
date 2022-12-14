@@ -16,13 +16,13 @@ public class UserOrder implements Serializable {
 
     public UserOrder() {}
 
-    public UserOrder(int id, String status, int userId, int apartmentId, Timestamp startTime, int leaseDuretion) {
+    public UserOrder(int id, String status, int userId, int apartmentId, Timestamp startTime, int leaseDuration) {
         this.id = id;
         this.status = status;
         this.userId = userId;
         this.apartmentId = apartmentId;
         this.startTime = startTime;
-        this.leaseDuration = leaseDuretion;
+        this.leaseDuration = leaseDuration;
     }
 
     public int getId() {
